@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Schema2Code.Code
 {
-    public interface IProperty
+    public interface IProperty<TAttribute> : IName, IMetadata<TAttribute> where TAttribute:IAttribute
     {
-        IType Type { get; }
+        IType<TAttribute,IProperty<TAttribute>>  Type { get; set; }
     }
 }

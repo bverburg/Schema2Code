@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Schema2Code.Code.CSharp
 {
-    public class Type : AbstractType<Attribute,Property>
+    public class Namespace : INamespace
     {
-        public override IQualifiedName QualifiedName
+        public string Name
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }

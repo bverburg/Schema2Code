@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
+using Schema2Code.Code.CSharp;
 using Schema2Code.Xml.Schema;
 using Xunit;
 
@@ -60,6 +61,11 @@ namespace Test
                 Console.Write("ERROR: ");
 
             Console.WriteLine(args.Message);
+        }
+
+        private static void ComplexToType(XmlSchemaElement elem)
+        {
+            var newType = new Schema2Code.Code.CSharp.Type(){QualifiedName = new QualifiedName()};
         }
 
         private static void ProcessElement(XmlSchemaElement elem)

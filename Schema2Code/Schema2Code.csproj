@@ -44,7 +44,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Code\AbstractProperty.cs" />
+    <Compile Include="Code\AbstractQualifiedName.cs" />
+    <Compile Include="Code\AbstractType.cs" />
+    <Compile Include="Code\CSharp\Attribute.cs" />
+    <Compile Include="Code\CSharp\Namespace.cs" />
+    <Compile Include="Code\CSharp\Property.cs" />
+    <Compile Include="Code\CSharp\QualifiedName.cs" />
     <Compile Include="Code\CSharp\Type.cs" />
+    <Compile Include="Code\IAttribute.cs" />
+    <Compile Include="Code\IMetadata.cs" />
     <Compile Include="Code\IName.cs" />
     <Compile Include="Code\INamespace.cs" />
     <Compile Include="Code\IProperty.cs" />
@@ -56,7 +65,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Code\CSharp\Native\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
