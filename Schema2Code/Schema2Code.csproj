@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Code\CSharp\Type.cs" />
+    <Compile Include="Code\IName.cs" />
     <Compile Include="Code\INamespace.cs" />
     <Compile Include="Code\IProperty.cs" />
     <Compile Include="Code\IType.cs" />
@@ -54,9 +56,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Code\Sharp\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
