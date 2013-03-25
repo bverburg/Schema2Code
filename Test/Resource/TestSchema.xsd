@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by Bas Verburg (Codecast) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="namespace.test.complextypes:v1" xmlns:ns2="testschema:v1" targetNamespace="testschema:v1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="namespace.test.complextypes:v1" schemaLocation="./ComplexTypes.xsd"/>
+	<xs:element name="ShoeSize" type="ns1:sizeType">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Document" type="ns1:documentType"/>
+</xs:schema>

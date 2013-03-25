@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema2Code", "Schema2Code\Schema2Code.csproj", "{3375C231-3379-4375-A0F3-1BBC14B091A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{A1EF55B2-B60A-4BE0-B511-5DAC6F6DF16E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3375C231-3379-4375-A0F3-1BBC14B091A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3375C231-3379-4375-A0F3-1BBC14B091A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3375C231-3379-4375-A0F3-1BBC14B091A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3375C231-3379-4375-A0F3-1BBC14B091A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1EF55B2-B60A-4BE0-B511-5DAC6F6DF16E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1EF55B2-B60A-4BE0-B511-5DAC6F6DF16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1EF55B2-B60A-4BE0-B511-5DAC6F6DF16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1EF55B2-B60A-4BE0-B511-5DAC6F6DF16E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
