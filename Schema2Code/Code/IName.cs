@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Schema2Code.Code
 {
-    public interface IQualifiedName : IName
+    public interface IName
     {
-        INamespace NameSpace { get; }
-        String FullyQualifiedName { get; }
+        String Name { get; }
     }
 }

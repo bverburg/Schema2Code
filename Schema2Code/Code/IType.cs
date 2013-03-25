@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Schema2Code.Code
 {
-    public interface IType
+    public interface IType : IQualifiedName
     {
-        IQualifiedName QualifiedName { get; }
-
+        List<IProperty> Properties { get; } 
     }
 }

@@ -7,6 +7,6 @@ namespace Schema2Code.Code
 {
     public interface IProperty
     {
-
+        IType Type { get; }
     }
 }
