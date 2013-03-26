@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FluentValidation;
+using Ninject;
+using Schema2Code.Code.CSharp.Validation;
 
 namespace Schema2Code.Code.CSharp
 {
@@ -9,21 +12,17 @@ namespace Schema2Code.Code.CSharp
     {
         private String name;
 
+        [Inject]
+        public NamespaceValidator NamespaceValidator { get; set; }
+
         public string Name
         {
             get { return name; }
             set
             {
-                if (Validate(value))
-                {
-                    name = value;
-                }
+                NamespaceValidator.ValidateAndThrow(value);
+                name = value;
             }
-        }
-
-        public static bool Validate(String name)
-        {
-            return true;
         }
     }
 }
