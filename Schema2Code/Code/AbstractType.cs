@@ -1,40 +1,40 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Schema2Code.Code.CSharp;
-using Attribute = System.Attribute;
 
 namespace Schema2Code.Code
 {
-    public abstract class AbstractType<TAttribute,TProperty> : IType<TAttribute,TProperty> where TAttribute : IAttribute where TProperty:IProperty<TAttribute>
+    public abstract class AbstractType : IType
     {
-        private readonly List<TAttribute> attributes = new List<TAttribute>();
-        private readonly List<TProperty> properties = new List<TProperty>();
+        private readonly List<IAttribute> attributes = new List<IAttribute>();
+        private readonly List<IProperty> properties = new List<IProperty>();
 
-        public virtual IEnumerable<TAttribute> Attributes {
-            get { return attributes;  }
+        public virtual IEnumerable<IAttribute> Attributes
+        {
+            get { return attributes; }
         }
-        public virtual void AddAttribute(TAttribute attribute)
+
+        public virtual void AddAttribute(IAttribute attribute)
         {
             attributes.Add(attribute);
         }
 
-        public virtual void RemoveAttribute(TAttribute attribute)
+        public virtual void RemoveAttribute(IAttribute attribute)
         {
             attributes.Remove(attribute);
         }
 
         public abstract IQualifiedName QualifiedName { get; set; }
 
-        public virtual IEnumerable<TProperty> Properties
+        public virtual IEnumerable<IProperty> Properties
         {
             get { return properties; }
         }
-        public virtual void AddProperty(TProperty property)
+
+        public virtual void AddProperty(IProperty property)
         {
             properties.Add(property);
         }
-        public virtual void RemoveProperty(TProperty property)
+
+        public virtual void RemoveProperty(IProperty property)
         {
             properties.Remove(property);
         }

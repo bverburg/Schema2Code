@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using FluentValidation;
 using Ninject;
-using Schema2Code.Code.CSharp.Validation;
+using Schema2Code.CSharp.Code.Validation;
+using Schema2Code.Code;
 
-namespace Schema2Code.Code.CSharp
+namespace Schema2Code.CSharp.Code
 {
     public class Namespace : INamespace
     {

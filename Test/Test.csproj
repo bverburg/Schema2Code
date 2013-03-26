@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.3.4.6.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
@@ -80,6 +83,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Schema2Code.CSharp\Schema2Code.CSharp.csproj">
+      <Project>{F6B254DD-BEC8-41DB-BAB7-D9FE0C441457}</Project>
+      <Name>Schema2Code.CSharp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Schema2Code\Schema2Code.csproj">
       <Project>{3375C231-3379-4375-A0F3-1BBC14B091A7}</Project>
       <Name>Schema2Code</Name>

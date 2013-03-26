@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Schema2Code.Code.CSharp
+namespace Schema2Code.Code
 {
-    public class Property : AbstractProperty<Attribute>
+    public interface INamed
     {
-       
+        String Name { get; set; }
     }
 }

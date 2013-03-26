@@ -3,10 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
-using Schema2Code.Code.CSharp;
+using AutoMapper;
+using Ninject;
+using Schema2Code.CSharp.Inject;
+using Schema2Code.Code;
+using Schema2Code.Mapping;
 using Schema2Code.Xml.Schema;
 using Xunit;
 
@@ -17,11 +22,17 @@ namespace Test
         [Fact]
         public void Test()
         {
+            var kernel = new StandardKernel(new CSharpModule());
+
+            Mapper.Initialize(map =>
+            {
+                map.ConstructServicesUsing(t => kernel.Get(t));
+                map.AddProfile<SchemaMapProfile>();
+            });
+            Mapper.AssertConfigurationIsValid();
+
             var schema = ReadAndCompileSchema("Resource/TestSchema.xsd");
-            
             TraverseSOM(schema);
-
-
         }
 
         private static void TraverseSOM(XmlSchema custSchema)
@@ -65,7 +76,7 @@ namespace Test
 
         private static void ComplexToType(XmlSchemaElement elem)
         {
-            var newType = new Schema2Code.Code.CSharp.Type(){QualifiedName = new QualifiedName()};
+            //var newType = new Schema2Code.Code.CSharp.Type(){QualifiedName = new QualifiedName()};
         }
 
         private static void ProcessElement(XmlSchemaElement elem)
@@ -74,14 +85,17 @@ namespace Test
 
             if (elem.ElementSchemaType is XmlSchemaComplexType)
             {
-                XmlSchemaComplexType ct =
-                    elem.ElementSchemaType as XmlSchemaComplexType;
+                var type = AutoMapper.Mapper.Map<IType>(elem.ElementSchemaType);
 
-                foreach (DictionaryEntry obj in ct.AttributeUses)
-                    Console.WriteLine("Attribute: {0}  ",
-                    (obj.Value as XmlSchemaAttribute).Name);
 
-                ProcessSchemaObject(ct.ContentTypeParticle);
+                //XmlSchemaComplexType ct =
+                //    elem.ElementSchemaType as XmlSchemaComplexType;
+
+                //foreach (DictionaryEntry obj in ct.AttributeUses)
+                //    Console.WriteLine("Attribute: {0}  ",
+                //    (obj.Value as XmlSchemaAttribute).Name);
+
+                //ProcessSchemaObject(ct.ContentTypeParticle);
             }
         }
 

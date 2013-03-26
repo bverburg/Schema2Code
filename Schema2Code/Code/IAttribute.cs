@@ -7,5 +7,6 @@ namespace Schema2Code.Code
 {
     public interface IAttribute
     {
+        
     }
 }

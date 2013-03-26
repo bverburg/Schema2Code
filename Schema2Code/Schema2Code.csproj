@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.3.4.6.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
@@ -62,27 +65,29 @@
     <Compile Include="Code\AbstractProperty.cs" />
     <Compile Include="Code\AbstractQualifiedName.cs" />
     <Compile Include="Code\AbstractType.cs" />
-    <Compile Include="Code\CSharp\Attribute.cs" />
-    <Compile Include="Code\CSharp\Namespace.cs" />
-    <Compile Include="Code\CSharp\Property.cs" />
-    <Compile Include="Code\CSharp\QualifiedName.cs" />
-    <Compile Include="Code\CSharp\Type.cs" />
-    <Compile Include="Code\CSharp\Validation\NamespaceValidator.cs" />
     <Compile Include="Code\IAttribute.cs" />
     <Compile Include="Code\IMetadata.cs" />
-    <Compile Include="Code\IName.cs" />
+    <Compile Include="Code\INamed.cs" />
     <Compile Include="Code\INamespace.cs" />
     <Compile Include="Code\IProperty.cs" />
     <Compile Include="Code\IType.cs" />
     <Compile Include="Code\IQualifiedName.cs" />
-    <Compile Include="Inject\Module.cs" />
+    <Compile Include="Code\ITyped.cs" />
+    <Compile Include="Mapping\Resolver\AbstractNamespaceFormatter.cs" />
+    <Compile Include="Mapping\MappingExtensions.cs" />
+    <Compile Include="Mapping\Resolver\AbstractPropertyNameResolver.cs" />
+    <Compile Include="Mapping\Resolver\AbstractTypeNameResolver.cs" />
+    <Compile Include="Mapping\SchemaMapProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Xml\Schema\FileSystemResourceResolver.cs" />
+    <Compile Include="Xml\Util\XmlUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Inject\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

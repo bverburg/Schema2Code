@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Schema2Code.Code
 {
-    public interface INamespace : IName
+    public interface INamespace : INamed
     {
         
     }

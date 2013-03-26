@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Schema2Code.Code
 {
-    public interface IName
+    public interface ITyped
     {
-        String Name { get; set; }
+        IType Type { get; set; }
     }
 }

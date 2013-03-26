@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using AutoMapper;
 using Console.Command;
 using NLog;
+using Ninject;
+using Schema2Code.Mapping;
 
 namespace Console
 {
     class Program
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         static void Main(string[] args)
         {
@@ -17,8 +21,19 @@ namespace Console
             if (CommandLine.Parser.Default.ParseArguments(args, options))
             {
                 // Values are available here
-                if (options.Verbose) logger.Info("Filename: {0}", options.InputFile);
+                if (options.Verbose) Logger.Info("Filename: {0}", options.InputFile);
             }
+
+            var kernel = new StandardKernel();
+            kernel.Load(AppDomain.CurrentDomain.GetAssemblies());
+
+            Mapper.Initialize(map =>
+                                  {
+                                      map.ConstructServicesUsing(t => kernel.Get(t));
+                                      map.AddProfile<SchemaMapProfile>();
+                                  });
+
+            //AutoMapper.Mapper.Map();
         }
     }
 }
