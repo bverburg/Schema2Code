@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Schema;
 using AutoMapper;
+using Schema2Code.Code;
 
 namespace Schema2Code.Mapping.Resolver
 {
-    public abstract class AbstractPropertyNameResolver : ValueResolver<string, string>
+    public abstract class AbstractPropertiesResolver : ValueResolver<XmlSchemaObject,IProperty>
     {
-        protected abstract override string ResolveCore(string source);
     }
 }

@@ -7,6 +7,7 @@ using System.Xml.Schema;
 using AutoMapper;
 using Schema2Code.Code;
 using Schema2Code.Mapping;
+using Schema2Code.Mapping.Formatter;
 using Schema2Code.Mapping.Resolver;
 
 namespace Schema2Code.Mapping

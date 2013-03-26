@@ -6,6 +6,7 @@ using System.Xml;
 using Schema2Code.CSharp.Code;
 using Schema2Code.Code;
 using Schema2Code.Mapping;
+using Schema2Code.Mapping.Formatter;
 using Schema2Code.Mapping.Resolver;
 
 namespace Schema2Code.CSharp.Mapping.Resolver

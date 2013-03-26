@@ -103,7 +103,10 @@
     <Compile Include="Code\Type.cs" />
     <Compile Include="Code\Validation\NamespaceValidator.cs" />
     <Compile Include="Inject\CSharpModule.cs" />
-    <Compile Include="Mapping\Resolver\NamespaceFormatter.cs" />
+    <Compile Include="Mapping\Formatter\PropertyNameFormatter.cs" />
+    <Compile Include="Mapping\Formatter\TypeNameFormatter.cs" />
+    <Compile Include="Mapping\Formatter\NamespaceFormatter.cs" />
+    <Compile Include="Mapping\Resolver\PropertiesResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

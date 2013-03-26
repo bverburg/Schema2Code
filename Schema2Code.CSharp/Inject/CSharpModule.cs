@@ -4,6 +4,7 @@ using Schema2Code.CSharp.Code.Validation;
 using Schema2Code.CSharp.Mapping.Resolver;
 using Schema2Code.Code;
 using Schema2Code.Mapping;
+using Schema2Code.Mapping.Formatter;
 using Schema2Code.Mapping.Resolver;
 
 namespace Schema2Code.CSharp.Inject
@@ -19,7 +20,6 @@ namespace Schema2Code.CSharp.Inject
             Bind<INamespace>().To<Namespace>();
             Bind<IType>().To<Type>();
             Bind<IQualifiedName>().To<QualifiedName>();
-            
         }
     }
 }
