@@ -1,42 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Schema2Code.Code
 {
     public abstract class AbstractType : IType
     {
         private readonly List<IAttribute> attributes = new List<IAttribute>();
-        private readonly List<IProperty> properties = new List<IProperty>();
+        
+        public virtual IQualifiedName QualifiedName { get; set; }
 
         public virtual IEnumerable<IAttribute> Attributes
         {
             get { return attributes; }
         }
 
-        public virtual void AddAttribute(IAttribute attribute)
+        protected bool Equals(AbstractType other)
         {
-            attributes.Add(attribute);
+            return Equals(QualifiedName, other.QualifiedName);
         }
 
-        public virtual void RemoveAttribute(IAttribute attribute)
+        public override bool Equals(object obj)
         {
-            attributes.Remove(attribute);
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((AbstractType) obj);
         }
 
-        public abstract IQualifiedName QualifiedName { get; set; }
-
-        public virtual IEnumerable<IProperty> Properties
+        public override int GetHashCode()
         {
-            get { return properties; }
+            return (QualifiedName != null ? QualifiedName.GetHashCode() : 0);
         }
 
-        public virtual void AddProperty(IProperty property)
+        public override string ToString()
         {
-            properties.Add(property);
-        }
-
-        public virtual void RemoveProperty(IProperty property)
-        {
-            properties.Remove(property);
+            return "Type: "+ QualifiedName.ToString();
         }
     }
 }

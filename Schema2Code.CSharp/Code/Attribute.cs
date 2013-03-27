@@ -5,7 +5,7 @@ namespace Schema2Code.CSharp.Code
 {
     public class Attribute : IAttribute
     {
-        public IType Type
+        public IClass Type
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }

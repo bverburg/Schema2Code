@@ -13,7 +13,7 @@
 			<xs:element name="lines">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="line" maxOccurs="unbounded"/>
+						<xs:element name="line" type="xs:string" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>

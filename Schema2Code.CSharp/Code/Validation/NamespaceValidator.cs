@@ -7,7 +7,7 @@ namespace Schema2Code.CSharp.Code.Validation
     {
         public NamespaceValidator()
         {
-            RuleFor(ns => ns).NotNull().NotEmpty().Matches("^(([A-Z]{1}[A-Za-z0-9]+)[\\.])+([A-Z]{1}[a-z]+)").OverridePropertyName("Namespace");
+            RuleFor(ns => ns).NotNull().NotEmpty().Matches("^(([A-Za-z0-9]+)[\\.]{0,1})+([A-Za-z]+)").OverridePropertyName("Namespace");
         }
     }
 }

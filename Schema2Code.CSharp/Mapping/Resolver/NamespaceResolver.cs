@@ -11,8 +11,10 @@ using Schema2Code.Mapping.Resolver;
 
 namespace Schema2Code.CSharp.Mapping.Resolver
 {
-    public class NamespaceFormatter : AbstractNamespaceFormatter
+    public class NamespaceResolver : AbstractNamespaceResolver
     {
+        public static readonly String SchemaNamespace = "http://www.w3.org/2001/XMLSchema";
+
         IEnumerable<char> CharsToTitleCase(string s)
         {
             bool newWord = true;
@@ -24,10 +26,22 @@ namespace Schema2Code.CSharp.Mapping.Resolver
             }
         }
 
-        protected override string FormatValueCore(string name)
+        protected override string ResolveCore(string name)
         {
-            var loc = name.IndexOf(':');
-            return new string(CharsToTitleCase(name.Substring(0, loc)).ToArray());
+            String ns = String.Empty;
+
+            if (SchemaNamespace.Equals(name))
+            {
+                return "System";
+            }
+            else
+            {
+                var loc = name.IndexOf(':');
+                ns = (loc >= 0) ? new string(CharsToTitleCase(name.Substring(0, loc)).ToArray()) : name;
+            }
+            return ns;
         }
+
+        
     }
 }

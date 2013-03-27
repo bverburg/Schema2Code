@@ -2,7 +2,7 @@
 
 namespace Schema2Code.Mapping.Formatter
 {
-    public abstract class AbstractNamespaceFormatter : ValueFormatter<string>
+    public abstract class AbstractNamespaceResolver : ValueResolver<string,string>
     {
         
     }

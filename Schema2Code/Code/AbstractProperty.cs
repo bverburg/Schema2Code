@@ -15,13 +15,30 @@ namespace Schema2Code.Code
             get { return attributes; }
         }
 
-        public virtual void AddAttribute(IAttribute attribute)
+        protected bool Equals(AbstractProperty other)
         {
-            this.attributes.Add(attribute);
+            return string.Equals(Name, other.Name) && Equals(Type, other.Type);
         }
-        public virtual void RemoveAttribute(IAttribute attribute)
+
+        public override bool Equals(object obj)
         {
-            this.attributes.Remove(attribute);
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((AbstractProperty) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return ((Name != null ? Name.GetHashCode() : 0)*397) ^ (Type != null ? Type.GetHashCode() : 0);
+            }
+        }
+
+        public override string ToString()
+        {
+            return "Property: " + Name + "of type: " + Type;
         }
     }
 }

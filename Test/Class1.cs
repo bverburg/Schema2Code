@@ -76,38 +76,50 @@ namespace Test
 
         private static void ComplexToType(XmlSchemaElement elem)
         {
-            //var newType = new Schema2Code.Code.CSharp.Type(){QualifiedName = new QualifiedName()};
+            //var newType = new Schema2Code.Code.CSharp.Class(){QualifiedName = new QualifiedName()};
         }
 
         private static void ProcessElement(XmlSchemaElement elem)
         {
-            Console.WriteLine("Element: {0}", elem.Name);
+            //Console.WriteLine("Element: {0}", elem.Name);
+
+            IType type = null;
+
+            if (elem.ElementSchemaType is XmlSchemaSimpleType)
+            {
+                type = AutoMapper.Mapper.Map<IType>(elem);
+            }
 
             if (elem.ElementSchemaType is XmlSchemaComplexType)
             {
-                var type = AutoMapper.Mapper.Map<IType>(elem.ElementSchemaType);
+                if (!elem.ElementSchemaType.QualifiedName.IsEmpty)
+                {
+                    type = AutoMapper.Mapper.Map<IClass>(elem);
+                }
+                XmlSchemaComplexType ct =
+                       elem.ElementSchemaType as XmlSchemaComplexType;
+
+                foreach (DictionaryEntry obj in ct.AttributeUses)
+                    Console.WriteLine("Attribute: {0}  ",
+                                      (obj.Value as XmlSchemaAttribute).Name);
 
 
-                //XmlSchemaComplexType ct =
-                //    elem.ElementSchemaType as XmlSchemaComplexType;
-
-                //foreach (DictionaryEntry obj in ct.AttributeUses)
-                //    Console.WriteLine("Attribute: {0}  ",
-                //    (obj.Value as XmlSchemaAttribute).Name);
-
-                //ProcessSchemaObject(ct.ContentTypeParticle);
+                ProcessSchemaObject(ct.ContentTypeParticle);
             }
+            if(type != null)
+                Console.WriteLine(type.ToString());
+            
         }
 
         private static void ProcessSequence(XmlSchemaSequence sequence)
         {
-            Console.WriteLine("Sequence");
+            //Console.WriteLine("Sequence");
             ProcessItemCollection(sequence.Items);
         }
 
         private static void ProcessChoice(XmlSchemaChoice choice)
         {
-            Console.WriteLine("Choice");
+            //Console.WriteLine("Choice");
             ProcessItemCollection(choice.Items);
         }
 

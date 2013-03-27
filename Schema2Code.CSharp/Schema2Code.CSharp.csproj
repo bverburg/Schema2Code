@@ -13,6 +13,8 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -100,12 +102,14 @@
     <Compile Include="Code\Namespace.cs" />
     <Compile Include="Code\Property.cs" />
     <Compile Include="Code\QualifiedName.cs" />
+    <Compile Include="Code\Class.cs" />
+    <Compile Include="Code\Register\TypeRegister.cs" />
     <Compile Include="Code\Type.cs" />
     <Compile Include="Code\Validation\NamespaceValidator.cs" />
     <Compile Include="Inject\CSharpModule.cs" />
     <Compile Include="Mapping\Formatter\PropertyNameFormatter.cs" />
     <Compile Include="Mapping\Formatter\TypeNameFormatter.cs" />
-    <Compile Include="Mapping\Formatter\NamespaceFormatter.cs" />
+    <Compile Include="Mapping\Resolver\NamespaceResolver.cs" />
     <Compile Include="Mapping\Resolver\PropertiesResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -120,6 +124,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
