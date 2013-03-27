@@ -38,7 +38,7 @@ namespace Schema2Code.Code
 
         public override string ToString()
         {
-            return "Property: " + Name + "of type: " + Type;
+            return "Property[ Name = " + Name + "; Type = " + Type+" ]";
         }
     }
 }

@@ -11,5 +11,8 @@ namespace Schema2Code.Code
         IEnumerable<IType> GetTypes(String ns);
         IType GetType(IQualifiedName qualifiedName);
         IType GetType(String qualifiedName);
+
+        void AddType(IType type);
+        void RemoveType(IType type);
     }
 }

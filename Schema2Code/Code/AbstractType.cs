@@ -36,7 +36,7 @@ namespace Schema2Code.Code
 
         public override string ToString()
         {
-            return "Type: "+ QualifiedName.ToString();
+            return "Type[ Name = "+ QualifiedName + "; ]";
         }
     }
 }

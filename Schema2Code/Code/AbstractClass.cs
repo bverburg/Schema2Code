@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Schema2Code.Code
 {
     public abstract class AbstractClass : AbstractType, IClass
     {
-        private readonly List<IProperty> properties = new List<IProperty>();
+        private List<IProperty> properties = new List<IProperty>();
 
         public virtual IEnumerable<IProperty> Properties
         {
             get { return properties; }
+            set { properties = new List<IProperty>(value);}
         }
 
         public virtual void AddProperty(IProperty property)
@@ -23,7 +25,7 @@ namespace Schema2Code.Code
 
         public override string ToString()
         {
-            return "Class: "+base.ToString();
+            return "Class[ Type = " + base.ToString() + "; Properties = " + string.Join(", ", properties.Select(x => x.ToString())) + "]";
         }
     }
 }

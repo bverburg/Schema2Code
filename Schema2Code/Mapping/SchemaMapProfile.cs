@@ -29,7 +29,7 @@ namespace Schema2Code.Mapping
             CreateMap<XmlSchemaElement, IClass>()
                 .IgnoreAllUnmapped()
                 .ForMember(dest => dest.QualifiedName, opt => opt.MapFrom(src=>src.ElementSchemaType.QualifiedName))
-                //.ForMember(dest => dest.Properties, opt=>opt.MapFrom(src => src.ElementSchemaType))
+                .ForMember(dest => dest.Properties, opt => opt.ResolveUsing<AbstractPropertiesResolver>())
                 .ConstructUsingServiceLocator();
 
             CreateMap<XmlSchemaDatatype, IQualifiedName>()
@@ -50,10 +50,16 @@ namespace Schema2Code.Mapping
 
             CreateMap<XmlSchemaElement, IProperty>()
                 .IgnoreAllUnmapped()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.ElementSchemaType))
+                .ForMember(dest => dest.Name, opt => { opt.AddFormatter<AbstractPropertyNameFormatter>(); opt.MapFrom(src => src.Name); })
+                .ForMember(dest => dest.Type, opt => opt.ResolveUsing<AbstractTypeResolver>()) //type resolver
                 .ConstructUsingServiceLocator();
 
+            CreateMap<XmlSchemaElement, IEnumerableProperty>()
+                .IgnoreAllUnmapped()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.ItemName, opt => opt.ResolveUsing<AbstractEnumerableItemNameResolver>())
+                .ForMember(dest => dest.Type, opt => opt.ResolveUsing<AbstractEnumerableTypeResolver>()) //type resolver
+                .ConstructUsingServiceLocator();
         }
     }
 }

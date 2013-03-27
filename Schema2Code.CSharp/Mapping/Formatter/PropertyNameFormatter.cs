@@ -6,7 +6,7 @@ namespace Schema2Code.CSharp.Mapping.Formatter
     {
         protected override string FormatValueCore(string value)
         {
-            throw new System.NotImplementedException();
+            return value;
         }
     }
 }

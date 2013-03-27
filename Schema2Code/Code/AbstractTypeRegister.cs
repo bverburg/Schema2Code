@@ -28,5 +28,16 @@ namespace Schema2Code.Code
         {
             return internalTypes.Find(x => x.QualifiedName.FullyQualifiedName.Equals(qualifiedName));
         }
+
+        public void AddType(IType type)
+        {
+            if(!internalTypes.Contains(type))
+                internalTypes.Add(type);
+        }
+
+        public void RemoveType(IType type)
+        {
+            internalTypes.Remove(type);
+        }
     }
 }

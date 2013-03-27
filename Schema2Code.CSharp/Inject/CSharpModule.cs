@@ -16,8 +16,14 @@ namespace Schema2Code.CSharp.Inject
         {
             Bind<NamespaceValidator>().ToSelf();
             Bind<AbstractNamespaceResolver>().To<NamespaceResolver>();
+            Bind<AbstractPropertiesResolver>().To<PropertiesResolver>();
             Bind<AbstractTypeNameFormatter>().To<TypeNameFormatter>();
+            Bind<AbstractPropertyNameFormatter>().To<PropertyNameFormatter>();
+            Bind<AbstractEnumerableTypeResolver>().To<EnumerableTypeResolver>();
+            Bind<AbstractEnumerableItemNameResolver>().To<EnumerableItemNameResolver>();
+            Bind<AbstractTypeResolver>().To<TypeResolver>();
             Bind<IAttribute>().To<Attribute>();
+            Bind<IEnumerableProperty>().To<EnumerableProperty>();
             Bind<IProperty>().To<Property>();
             Bind<INamespace>().To<Namespace>();
             Bind<IClass>().To<Class>();
