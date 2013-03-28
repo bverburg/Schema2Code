@@ -36,8 +36,9 @@ namespace Schema2Code.CSharp.Mapping.Resolver
             }
             else
             {
-                var loc = name.IndexOf(':');
-                ns = (loc >= 0) ? new string(CharsToTitleCase(name.Substring(0, loc)).ToArray()) : name;
+                //var loc = name.IndexOf(':');
+
+                ns = new string(CharsToTitleCase(name.Replace(':', '.')).ToArray());
             }
             return ns;
         }
