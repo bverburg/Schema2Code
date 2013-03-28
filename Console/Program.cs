@@ -20,8 +20,8 @@ namespace Console
             var options = new Options();
             if (CommandLine.Parser.Default.ParseArguments(args, options))
             {
-                // Values are available here
-                if (options.Verbose) Logger.Info("Filename: {0}", options.InputFile);
+                // Values are available here  
+                if (options.Verbose) Logger.Info("Filgename: {0}", options.InputFile);
             }
 
             var kernel = new StandardKernel();
