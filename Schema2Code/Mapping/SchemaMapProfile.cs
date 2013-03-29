@@ -30,18 +30,15 @@ namespace Schema2Code.Mapping
                 .IgnoreAllUnmapped()
                 .ForMember(dest => dest.QualifiedName, opt => opt.ResolveUsing<AbstractTypeNameResolver>()) // opt.MapFrom(src => src.ElementSchemaType.QualifiedName))
                 .ForMember(dest => dest.Members, opt => opt.ResolveUsing<AbstractMembersResolver>())
+                .ForMember(dest => dest.Attributes, opt => opt.ResolveUsing<AbstractAttributesResolver>())
                 .ConstructUsingServiceLocator();
 
             CreateMap<XmlSchemaElement, IType>()
                 .IgnoreAllUnmapped()
                 .ForMember(dest => dest.QualifiedName, opt => opt.MapFrom(src => src.ElementSchemaType.QualifiedName))
-                .ConstructUsingServiceLocator();
 
-            CreateMap<XmlSchemaType, IType>()
-                .IgnoreAllUnmapped()
-                .ForMember(dest => dest.QualifiedName, opt => opt.MapFrom(src => src.QualifiedName))
                 .ConstructUsingServiceLocator();
-
+            
             CreateMap<XmlSchemaElement, IMember>()
                 .IgnoreAllUnmapped()
                 .ForMember(dest => dest.Name, opt => { opt.AddFormatter<AbstractMemberNameFormatter>(); opt.MapFrom(src => src.Name); })

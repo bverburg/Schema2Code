@@ -16,7 +16,7 @@ namespace Test
         [Fact]
         public void TestToString()
         {
-            var kernel = new StandardKernel(new CSharpModule());
+            var kernel = new StandardKernel(new CodeModule());
             var name = kernel.Get<IQualifiedName>();
             var nameSpace = kernel.Get<INamespace>();
             

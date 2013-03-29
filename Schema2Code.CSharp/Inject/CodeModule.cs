@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Ninject.Modules;
+﻿using Ninject.Modules;
 using Schema2Code.CSharp.Code;
 using Schema2Code.CSharp.Code.Validation;
 using Schema2Code.CSharp.Mapping.Formatter;
@@ -10,7 +9,7 @@ using Schema2Code.Mapping.Resolver;
 
 namespace Schema2Code.CSharp.Inject
 {
-    public class CSharpModule : NinjectModule
+    public class CodeModule : NinjectModule
     {
         public override void Load()
         {
@@ -18,6 +17,7 @@ namespace Schema2Code.CSharp.Inject
             Bind<AbstractNamespaceResolver>().To<NamespaceResolver>().InSingletonScope();
             Bind<AbstractTypeNameResolver>().To<TypeNameResolver>().InSingletonScope();
             Bind<AbstractMembersResolver>().To<MembersResolver>().InSingletonScope();
+            Bind<AbstractAttributesResolver>().To<AttributesResolver>().InSingletonScope();
             Bind<AbstractTypeNameFormatter>().To<TypeNameFormatter>().InSingletonScope();
             Bind<AbstractMemberNameFormatter>().To<MemberNameFormatter>().InSingletonScope();
             Bind<AbstractEnumerableTypeResolver>().To<EnumerableTypeResolver>().InSingletonScope();

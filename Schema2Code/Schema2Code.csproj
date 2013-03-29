@@ -86,6 +86,7 @@
     <Compile Include="Mapping\ITypeConverter.cs" />
     <Compile Include="Mapping\IValueFormatter.cs" />
     <Compile Include="Mapping\IValueResolver.cs" />
+    <Compile Include="Mapping\Resolver\AbstractAttributesResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractTypeNameResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractNamespaceResolver.cs" />
     <Compile Include="Mapping\Formatter\AbstractMemberNameFormatter.cs" />

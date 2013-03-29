@@ -22,7 +22,7 @@ namespace Test
         [Fact]
         public void Test()
         {
-            var kernel = new StandardKernel(new CSharpModule());
+            var kernel = new StandardKernel(new CodeModule());
 
             Mapper.Initialize(map =>
             {

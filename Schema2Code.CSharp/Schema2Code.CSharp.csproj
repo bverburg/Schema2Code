@@ -108,9 +108,10 @@
     <Compile Include="Code\Type.cs" />
     <Compile Include="Code\TypeRegister.cs" />
     <Compile Include="Code\Validation\NamespaceValidator.cs" />
-    <Compile Include="Inject\CSharpModule.cs" />
+    <Compile Include="Inject\CodeModule.cs" />
     <Compile Include="Mapping\Formatter\MemberNameFormatter.cs" />
     <Compile Include="Mapping\Formatter\TypeNameFormatter.cs" />
+    <Compile Include="Mapping\Resolver\AttributesResolver.cs" />
     <Compile Include="Mapping\Resolver\TypeNameResolver.cs" />
     <Compile Include="Mapping\Resolver\EnumerableItemNameResolver.cs" />
     <Compile Include="Mapping\Resolver\EnumerableTypeResolver.cs" />
