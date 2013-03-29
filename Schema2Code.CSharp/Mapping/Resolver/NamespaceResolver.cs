@@ -26,7 +26,7 @@ namespace Schema2Code.CSharp.Mapping.Resolver
             }
         }
 
-        protected override string ResolveCore(string name)
+        public override string Resolve(string name)
         {
             String ns = String.Empty;
 
@@ -36,9 +36,7 @@ namespace Schema2Code.CSharp.Mapping.Resolver
             }
             else
             {
-                //var loc = name.IndexOf(':');
-
-                ns = new string(CharsToTitleCase(name.Replace(':', ',')).ToArray());
+                ns = new string(CharsToTitleCase(name.Replace(':', '.')).ToArray());
             }
             return ns;
         }

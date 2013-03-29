@@ -7,6 +7,7 @@ namespace Schema2Code.Code
 {
     public interface IMember : INamed, ITyped, IMetadata
     {
-        
+        bool IsNullable { get; set; }
+        bool IsRequired { get; set; }
     }
 }

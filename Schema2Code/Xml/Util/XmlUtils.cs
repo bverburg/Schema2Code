@@ -13,18 +13,19 @@ namespace Schema2Code.Xml.Util
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
 
-        public static XmlSchema ReadAndCompileSchema(string fileName)
+
+        public static XmlSchema ReadAndCompileSchema(string fileName, ValidationEventHandler handler)
         {
             var tr = XmlReader.Create(fileName);
             // The Read method will throw errors encountered
             // on parsing the schema
-            var schema = XmlSchema.Read(tr, ValidationCallback);
+            var schema = XmlSchema.Read(tr, handler);
             tr.Close();
 
             var xset = new XmlSchemaSet();
             xset.Add(schema);
 
-            xset.ValidationEventHandler += ValidationCallback;
+            xset.ValidationEventHandler += handler;
 
             // The Compile method will throw errors
             // encountered on compiling the schema
@@ -33,14 +34,12 @@ namespace Schema2Code.Xml.Util
             return schema;
         }
 
-        private static void ValidationCallback(object sender, ValidationEventArgs args)
+        public static void ValidationCallback(object sender, ValidationEventArgs args)
         {
             if (args.Severity == XmlSeverityType.Warning)
-                Console.Write("WARNING: ");
+                Logger.Warn(args.Message);
             else if (args.Severity == XmlSeverityType.Error)
-                Console.Write("ERROR: ");
-
-            Console.WriteLine(args.Message);
+                Logger.Error(args.Message);
         }
     }
 }

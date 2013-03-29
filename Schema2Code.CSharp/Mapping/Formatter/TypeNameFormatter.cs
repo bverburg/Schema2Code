@@ -4,7 +4,7 @@ namespace Schema2Code.CSharp.Mapping.Formatter
 {
     public class TypeNameFormatter : AbstractTypeNameFormatter
     {
-        protected override string FormatValueCore(string value)
+        public override string Format(string value)
         {
             return value.Substring(0, 1).ToUpper() + value.Substring(1, value.Length - 1);
         }

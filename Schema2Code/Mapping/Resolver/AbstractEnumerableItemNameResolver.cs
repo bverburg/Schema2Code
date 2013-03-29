@@ -8,7 +8,7 @@ using Schema2Code.Code;
 
 namespace Schema2Code.Mapping.Resolver
 {
-    public abstract class AbstractEnumerableItemNameResolver : ValueResolver<XmlSchemaElement,String>
+    public abstract class AbstractEnumerableItemNameResolver : AbstractValueResolver<XmlSchemaElement, String>
     {
         
     }

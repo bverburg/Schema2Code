@@ -4,7 +4,7 @@ namespace Schema2Code.CSharp.Mapping.Formatter
 {
     public class MemberNameFormatter : AbstractMemberNameFormatter
     {
-        protected override string FormatValueCore(string value)
+        public override string Format(string value)
         {
             return value;
         }

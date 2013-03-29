@@ -22,43 +22,37 @@ namespace Schema2Code.Mapping
 
             CreateMap<XmlQualifiedName, IQualifiedName>()
                 .IgnoreAllUnmapped()
-                .ForMember(dest => dest.Name, opt => {opt.AddFormatter<AbstractTypeNameFormatter>(); opt.MapFrom(src => src.Name); })
+                .ForMember(dest => dest.Name, opt => { opt.AddFormatter<AbstractTypeNameFormatter>(); opt.MapFrom(src => src.Name); })
                 .ForMember(dest => dest.NameSpace, opt => opt.MapFrom(src => src.Namespace))
                 .ConstructUsingServiceLocator();
 
             CreateMap<XmlSchemaElement, IClass>()
                 .IgnoreAllUnmapped()
-                .ForMember(dest => dest.QualifiedName, opt=> opt.MapFrom(src => src.ElementSchemaType.QualifiedName)) //opt => opt.ResolveUsing<AbstractClassNameResolver>())//
+                .ForMember(dest => dest.QualifiedName, opt => opt.ResolveUsing<AbstractTypeNameResolver>()) // opt.MapFrom(src => src.ElementSchemaType.QualifiedName))
                 .ForMember(dest => dest.Members, opt => opt.ResolveUsing<AbstractMembersResolver>())
-                .ConstructUsingServiceLocator();
-
-            CreateMap<XmlSchemaDatatype, IQualifiedName>()
-                .IgnoreAllUnmapped()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ValueType.Name))
-                .ForMember(dest => dest.NameSpace, opt => opt.MapFrom(src => src.ValueType.Namespace))
                 .ConstructUsingServiceLocator();
 
             CreateMap<XmlSchemaElement, IType>()
                 .IgnoreAllUnmapped()
-                .ForMember(dest => dest.QualifiedName, opt => opt.MapFrom(src => src.ElementSchemaType.Datatype))
+                .ForMember(dest => dest.QualifiedName, opt => opt.MapFrom(src => src.ElementSchemaType.QualifiedName))
                 .ConstructUsingServiceLocator();
 
             CreateMap<XmlSchemaType, IType>()
                 .IgnoreAllUnmapped()
-                .ForMember(dest => dest.QualifiedName, opt => opt.MapFrom(src => src.Datatype))
+                .ForMember(dest => dest.QualifiedName, opt => opt.MapFrom(src => src.QualifiedName))
                 .ConstructUsingServiceLocator();
 
             CreateMap<XmlSchemaElement, IMember>()
                 .IgnoreAllUnmapped()
                 .ForMember(dest => dest.Name, opt => { opt.AddFormatter<AbstractMemberNameFormatter>(); opt.MapFrom(src => src.Name); })
-                .ForMember(dest => dest.Type, opt => opt.ResolveUsing<AbstractTypeResolver>()) //type resolver
+                .ForMember(dest => dest.Type, opt => opt.ResolveUsing<AbstractTypeResolver>()) //type valueResolver
                 .ConstructUsingServiceLocator();
 
             CreateMap<XmlSchemaElement, IEnumerableMember>()
                 .IgnoreAllUnmapped()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.ItemName, opt => opt.ResolveUsing<AbstractEnumerableItemNameResolver>())
-                .ForMember(dest => dest.Type, opt => opt.ResolveUsing<AbstractEnumerableTypeResolver>()) //type resolver
+                .ForMember(dest => dest.Type, opt => opt.ResolveUsing<AbstractEnumerableTypeResolver>()) //type valueResolver
                 .ConstructUsingServiceLocator();
         }
     }

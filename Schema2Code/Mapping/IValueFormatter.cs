@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Schema2Code.Mapping
 {
-    public interface IValueResolver<in TFrom, out TTo>
+    public interface IValueFormatter<in T>
     {
-        TTo Resolve(TFrom from);
+        String Format(T source);
     }
 }

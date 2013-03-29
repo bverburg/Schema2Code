@@ -9,7 +9,7 @@ namespace Schema2Code.CSharp.Mapping.Resolver
 {
     public class EnumerableItemNameResolver : AbstractEnumerableItemNameResolver
     {
-        protected override string ResolveCore(XmlSchemaElement source)
+        public override string Resolve(XmlSchemaElement source)
         {
             var complex = source.ElementSchemaType as XmlSchemaComplexType;
             var sequence = complex.ContentTypeParticle as XmlSchemaSequence;

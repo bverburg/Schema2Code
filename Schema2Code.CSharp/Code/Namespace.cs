@@ -6,14 +6,14 @@ using Schema2Code.Code;
 
 namespace Schema2Code.CSharp.Code
 {
-    public class Namespace : INamespace
+    public class Namespace : AbstractNamespace
     {
         private String name;
 
         [Inject]
         public NamespaceValidator NamespaceValidator { get; set; }
 
-        public string Name
+        public override string Name
         {
             get { return name; }
             set

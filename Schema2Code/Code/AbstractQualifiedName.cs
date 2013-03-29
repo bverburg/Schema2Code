@@ -36,5 +36,10 @@ namespace Schema2Code.Code
                 return ((Name != null ? Name.GetHashCode() : 0)*397) ^ (NameSpace != null ? NameSpace.GetHashCode() : 0);
             }
         }
+
+        public static implicit operator String(AbstractQualifiedName name)
+        {
+            return name.FullyQualifiedName;
+        }
     }
 }

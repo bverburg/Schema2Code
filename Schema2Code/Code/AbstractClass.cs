@@ -10,12 +10,12 @@ namespace Schema2Code.Code
         public virtual IEnumerable<IMember> Members
         {
             get { return members; }
-            set { members = new List<IMember>(value);}
+            set { members = new List<IMember>(value); }
         }
 
         public override string ToString()
         {
-            return "Class[ Type = " + base.ToString() + "; Members = " + string.Join(", ", members.Select(x => x.ToString())) + "]";
+            return "Class[ Name = " + QualifiedName.Name + "; Namespace = " + QualifiedName.NameSpace + " Members = " + string.Join(", ", members.Select(x => x.ToString())) + "]";
         }
     }
 }

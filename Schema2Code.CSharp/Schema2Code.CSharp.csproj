@@ -106,11 +106,12 @@
     <Compile Include="Code\Class.cs" />
     <Compile Include="Code\Register\TypeRegister.cs" />
     <Compile Include="Code\Type.cs" />
+    <Compile Include="Code\TypeRegister.cs" />
     <Compile Include="Code\Validation\NamespaceValidator.cs" />
     <Compile Include="Inject\CSharpModule.cs" />
     <Compile Include="Mapping\Formatter\MemberNameFormatter.cs" />
     <Compile Include="Mapping\Formatter\TypeNameFormatter.cs" />
-    <Compile Include="Mapping\Resolver\ClassNameResolver.cs" />
+    <Compile Include="Mapping\Resolver\TypeNameResolver.cs" />
     <Compile Include="Mapping\Resolver\EnumerableItemNameResolver.cs" />
     <Compile Include="Mapping\Resolver\EnumerableTypeResolver.cs" />
     <Compile Include="Mapping\Resolver\NamespaceResolver.cs" />

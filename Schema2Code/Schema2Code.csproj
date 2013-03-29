@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Code\AbstractMember.cs" />
+    <Compile Include="Code\AbstractNamespace.cs" />
     <Compile Include="Code\AbstractQualifiedName.cs" />
     <Compile Include="Code\AbstractClass.cs" />
     <Compile Include="Code\AbstractType.cs" />
@@ -81,9 +82,11 @@
     <Compile Include="Code\IType.cs" />
     <Compile Include="Code\ITyped.cs" />
     <Compile Include="Code\ITypeRegister.cs" />
+    <Compile Include="Mapping\Formatter\AbstractValueFormatter.cs" />
     <Compile Include="Mapping\ITypeConverter.cs" />
+    <Compile Include="Mapping\IValueFormatter.cs" />
     <Compile Include="Mapping\IValueResolver.cs" />
-    <Compile Include="Mapping\Resolver\AbstractClassNameResolver.cs" />
+    <Compile Include="Mapping\Resolver\AbstractTypeNameResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractNamespaceResolver.cs" />
     <Compile Include="Mapping\Formatter\AbstractMemberNameFormatter.cs" />
     <Compile Include="Mapping\Formatter\AbstractTypeNameFormatter.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="Mapping\Resolver\AbstractTypeResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractEnumerableTypeResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractEnumerableItemNameResolver.cs" />
+    <Compile Include="Mapping\Resolver\AbstractValueResolver.cs" />
     <Compile Include="Mapping\SchemaMapProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Xml\Schema\FileSystemResourceResolver.cs" />

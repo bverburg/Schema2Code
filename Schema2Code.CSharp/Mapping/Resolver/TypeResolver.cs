@@ -10,7 +10,7 @@ namespace Schema2Code.CSharp.Mapping.Resolver
 {
     public class TypeResolver : AbstractTypeResolver
     {
-        protected override IType ResolveCore(XmlSchemaElement source)
+        public override IType ResolveType(XmlSchemaElement source)
         {
             var type = source.ElementSchemaType;
             if(type is XmlSchemaComplexType)

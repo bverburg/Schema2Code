@@ -11,7 +11,7 @@ namespace Schema2Code.CSharp.Mapping.Resolver
 {
     public class MembersResolver : AbstractMembersResolver
     {
-        protected override List<IMember> ResolveCore(XmlSchemaElement source)
+        public override List<IMember> Resolve(XmlSchemaElement source)
         {
             var complexType = source.ElementSchemaType as XmlSchemaComplexType;
             var xmlSequence = complexType.ContentTypeParticle as XmlSchemaSequence;
