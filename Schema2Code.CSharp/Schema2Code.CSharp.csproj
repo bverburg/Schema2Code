@@ -99,21 +99,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\Attribute.cs" />
-    <Compile Include="Code\EnumerableProperty.cs" />
+    <Compile Include="Code\EnumerableMember.cs" />
     <Compile Include="Code\Namespace.cs" />
-    <Compile Include="Code\Property.cs" />
+    <Compile Include="Code\Member.cs" />
     <Compile Include="Code\QualifiedName.cs" />
     <Compile Include="Code\Class.cs" />
     <Compile Include="Code\Register\TypeRegister.cs" />
     <Compile Include="Code\Type.cs" />
     <Compile Include="Code\Validation\NamespaceValidator.cs" />
     <Compile Include="Inject\CSharpModule.cs" />
-    <Compile Include="Mapping\Formatter\PropertyNameFormatter.cs" />
+    <Compile Include="Mapping\Formatter\MemberNameFormatter.cs" />
     <Compile Include="Mapping\Formatter\TypeNameFormatter.cs" />
+    <Compile Include="Mapping\Resolver\ClassNameResolver.cs" />
     <Compile Include="Mapping\Resolver\EnumerableItemNameResolver.cs" />
     <Compile Include="Mapping\Resolver\EnumerableTypeResolver.cs" />
     <Compile Include="Mapping\Resolver\NamespaceResolver.cs" />
-    <Compile Include="Mapping\Resolver\PropertiesResolver.cs" />
+    <Compile Include="Mapping\Resolver\MembersResolver.cs" />
     <Compile Include="Mapping\Resolver\TypeResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

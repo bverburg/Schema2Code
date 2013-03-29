@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Schema2Code.Code
 {
-    public abstract class AbstractEnumerableProperty : AbstractProperty, IEnumerableProperty
+    public abstract class AbstractEnumerableMember : AbstractMember, IEnumerableMember
     {
         public string ItemName { get; set; }
 
         public override string ToString()
         {
-            return "Enumerable Property[ Name = " + Name + "; ItemName = " + ItemName + " Type = "+ Type +"]";
+            return "Enumerable Member[ Name = " + Name + "; ItemName = " + ItemName + " Type = "+ Type +"]";
         }
     }
 }

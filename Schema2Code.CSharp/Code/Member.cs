@@ -2,7 +2,7 @@
 
 namespace Schema2Code.CSharp.Code
 {
-    public class Property : AbstractProperty
+    public class Member : AbstractMember
     {
     }
 }

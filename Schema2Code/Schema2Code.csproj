@@ -64,28 +64,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Code\AbstractProperty.cs" />
+    <Compile Include="Code\AbstractMember.cs" />
     <Compile Include="Code\AbstractQualifiedName.cs" />
     <Compile Include="Code\AbstractClass.cs" />
     <Compile Include="Code\AbstractType.cs" />
-    <Compile Include="Code\AbstractEnumerableProperty.cs" />
+    <Compile Include="Code\AbstractEnumerableMember.cs" />
     <Compile Include="Code\AbstractTypeRegister.cs" />
-    <Compile Include="Code\IEnumerableProperty.cs" />
+    <Compile Include="Code\IEnumerableMember.cs" />
     <Compile Include="Code\IAttribute.cs" />
     <Compile Include="Code\IMetadata.cs" />
     <Compile Include="Code\INamed.cs" />
     <Compile Include="Code\INamespace.cs" />
-    <Compile Include="Code\IProperty.cs" />
+    <Compile Include="Code\IMember.cs" />
     <Compile Include="Code\IClass.cs" />
     <Compile Include="Code\IQualifiedName.cs" />
     <Compile Include="Code\IType.cs" />
     <Compile Include="Code\ITyped.cs" />
     <Compile Include="Code\ITypeRegister.cs" />
+    <Compile Include="Mapping\ITypeConverter.cs" />
+    <Compile Include="Mapping\IValueResolver.cs" />
+    <Compile Include="Mapping\Resolver\AbstractClassNameResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractNamespaceResolver.cs" />
-    <Compile Include="Mapping\Formatter\AbstractPropertyNameFormatter.cs" />
+    <Compile Include="Mapping\Formatter\AbstractMemberNameFormatter.cs" />
     <Compile Include="Mapping\Formatter\AbstractTypeNameFormatter.cs" />
     <Compile Include="Mapping\MappingExtensions.cs" />
-    <Compile Include="Mapping\Resolver\AbstractPropertiesResolver.cs" />
+    <Compile Include="Mapping\Resolver\AbstractMembersResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractTypeResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractEnumerableTypeResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractEnumerableItemNameResolver.cs" />

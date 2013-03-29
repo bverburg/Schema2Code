@@ -2,7 +2,7 @@
 
 namespace Schema2Code.CSharp.Mapping.Formatter
 {
-    public class PropertyNameFormatter : AbstractPropertyNameFormatter
+    public class MemberNameFormatter : AbstractMemberNameFormatter
     {
         protected override string FormatValueCore(string value)
         {

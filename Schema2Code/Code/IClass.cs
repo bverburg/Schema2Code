@@ -7,6 +7,6 @@ namespace Schema2Code.Code
 {
     public interface IClass : IType
     {
-        IEnumerable<IProperty> Properties { get; set; }
+        IEnumerable<IMember> Members { get; set; }
     }
 }

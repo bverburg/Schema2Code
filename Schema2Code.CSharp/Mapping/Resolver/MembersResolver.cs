@@ -9,33 +9,33 @@ using Schema2Code.Mapping.Resolver;
 
 namespace Schema2Code.CSharp.Mapping.Resolver
 {
-    public class PropertiesResolver : AbstractPropertiesResolver
+    public class MembersResolver : AbstractMembersResolver
     {
-        protected override List<IProperty> ResolveCore(XmlSchemaElement source)
+        protected override List<IMember> ResolveCore(XmlSchemaElement source)
         {
             var complexType = source.ElementSchemaType as XmlSchemaComplexType;
             var xmlSequence = complexType.ContentTypeParticle as XmlSchemaSequence;
 
-            var properties = new List<IProperty>();
+            var properties = new List<IMember>();
 
             foreach (var item in xmlSequence.Items)
             {
                 var propertyElement = item as XmlSchemaElement;
                 if (propertyElement != null)
                 {
-                    IProperty property = null;
+                    IMember member = null;
 
                     if (!propertyElement.ElementSchemaType.QualifiedName.IsEmpty)
                     {
-                        property = AutoMapper.Mapper.Map<IProperty>(propertyElement);
+                        member = AutoMapper.Mapper.Map<IMember>(propertyElement);
                     }
                     else
                     {
-                        property = AutoMapper.Mapper.Map<IEnumerableProperty>(propertyElement);
+                        member = AutoMapper.Mapper.Map<IEnumerableMember>(propertyElement);
                     }
 
-                    if(property != null)
-                        properties.Add(property);
+                    if(member != null)
+                        properties.Add(member);
                 }
                     
             }

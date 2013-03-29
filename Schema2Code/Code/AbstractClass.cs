@@ -5,27 +5,17 @@ namespace Schema2Code.Code
 {
     public abstract class AbstractClass : AbstractType, IClass
     {
-        private List<IProperty> properties = new List<IProperty>();
+        private List<IMember> members = new List<IMember>();
 
-        public virtual IEnumerable<IProperty> Properties
+        public virtual IEnumerable<IMember> Members
         {
-            get { return properties; }
-            set { properties = new List<IProperty>(value);}
-        }
-
-        public virtual void AddProperty(IProperty property)
-        {
-            properties.Add(property);
-        }
-
-        public virtual void RemoveProperty(IProperty property)
-        {
-            properties.Remove(property);
+            get { return members; }
+            set { members = new List<IMember>(value);}
         }
 
         public override string ToString()
         {
-            return "Class[ Type = " + base.ToString() + "; Properties = " + string.Join(", ", properties.Select(x => x.ToString())) + "]";
+            return "Class[ Type = " + base.ToString() + "; Members = " + string.Join(", ", members.Select(x => x.ToString())) + "]";
         }
     }
 }

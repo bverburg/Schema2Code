@@ -8,4 +8,20 @@
 		</xs:annotation>
 	</xs:element>
 	<xs:element name="Document" type="ns1:documentType"/>
+	<xs:element name="Shoe">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="FeetSize" type="ns1:sizeType"/>
+				<xs:element name="Document" type="ns1:documentType"/>
+				<xs:element name="anonymous">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="number" type="xs:int"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Schema2Code.Code
 {
-    public abstract class AbstractProperty : IProperty
+    public abstract class AbstractMember : IMember
     {
         private readonly List<IAttribute> attributes = new List<IAttribute>();
 
@@ -15,7 +15,7 @@ namespace Schema2Code.Code
             get { return attributes; }
         }
 
-        protected bool Equals(AbstractProperty other)
+        protected bool Equals(AbstractMember other)
         {
             return string.Equals(Name, other.Name) && Equals(Type, other.Type);
         }
@@ -25,7 +25,7 @@ namespace Schema2Code.Code
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((AbstractProperty) obj);
+            return Equals((AbstractMember) obj);
         }
 
         public override int GetHashCode()
@@ -38,7 +38,7 @@ namespace Schema2Code.Code
 
         public override string ToString()
         {
-            return "Property[ Name = " + Name + "; Type = " + Type+" ]";
+            return "Member[ Name = " + Name + "; Type = " + Type+" ]";
         }
     }
 }

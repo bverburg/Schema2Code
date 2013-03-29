@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Schema2Code.Code
 {
-    public interface IProperty : INamed, ITyped, IMetadata
+    public interface IMember : INamed, ITyped, IMetadata
     {
         
     }

@@ -6,7 +6,7 @@ using Schema2Code.Code;
 
 namespace Schema2Code.CSharp.Code
 {
-    public class EnumerableProperty : AbstractEnumerableProperty
+    public class EnumerableMember : AbstractEnumerableMember
     {
 
     }

@@ -22,6 +22,11 @@ namespace Schema2Code.Mapping
             map.ConstructUsingServiceLocator();
             return map;
         }
+
+        public static void ResolveUsing<TSource,TDestination>(this IMemberConfigurationExpression<TSource> configuration, IValueResolver<TSource,TDestination> resolver)
+        {
+            //configuration.
+        }
     }
 
 
