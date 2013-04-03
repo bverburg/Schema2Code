@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2013 (http://www.altova.com) by Bas Verburg (Codecast) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="namespace.test.simpletypes:v1" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:simpleType name="integerType">
 		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="status">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ONLINE"/>
+			<xs:enumeration value="OFFLINE"/>
+			<xs:enumeration value="UNKNOWN"/>
+		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

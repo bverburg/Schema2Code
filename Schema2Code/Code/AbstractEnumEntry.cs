@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Schema2Code.Code
 {
-    public interface IClass : IType
+    public abstract class AbstractEnumEntry : IEnumEntry
     {
-        IType Extends { get; set; }
-        IEnumerable<IMember> Members { get; set; }
+        public string Name { get; set; }
     }
 }

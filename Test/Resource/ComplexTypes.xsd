@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2013 (http://www.altova.com) by Bas Verburg (Codecast) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="namespace.test.complextypes:v1" targetNamespace="namespace.test.complextypes:v1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="namespace.test.complextypes:v1" xmlns:ns2="namespace.test.simpletypes:v1" targetNamespace="namespace.test.complextypes:v1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="namespace.test.simpletypes:v1" schemaLocation="./SimpleTypes.xsd"/>
 	<xs:complexType name="sizeType">
 		<xs:sequence>
 			<xs:element name="size" type="xs:int"/>
@@ -17,6 +18,17 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="onlinestatus" type="ns2:status"/>
+			<xs:element name="pages" type="ns2:integerType"/>
 		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="shoeDocumentType">
+		<xs:complexContent>
+			<xs:extension base="ns1:documentType">
+				<xs:sequence>
+					<xs:element name="hasHeel" type="xs:boolean"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 </xs:schema>

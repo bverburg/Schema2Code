@@ -9,6 +9,7 @@ namespace Schema2Code.Code
     {
         private readonly List<IAttribute> attributes = new List<IAttribute>();
         
+
         public virtual IQualifiedName QualifiedName { get; set; }
 
         public virtual IEnumerable<IAttribute> Attributes
@@ -26,7 +27,7 @@ namespace Schema2Code.Code
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((AbstractType) obj);
+            return Equals((AbstractType)obj);
         }
 
         public override int GetHashCode()
@@ -36,7 +37,7 @@ namespace Schema2Code.Code
 
         public override string ToString()
         {
-            return "Type[ Name = "+ QualifiedName + "; ]";
+            return "Type[ Name = " + QualifiedName + "; ]";
         }
     }
 }

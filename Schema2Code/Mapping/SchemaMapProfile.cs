@@ -14,6 +14,11 @@ namespace Schema2Code.Mapping
 {
     public class SchemaMapProfile : Profile
     {
+        public override string ProfileName
+        {
+            get { return "DefaultSchemaMap"; }
+        }
+
         protected override void Configure()
         {
             CreateMap<string, INamespace>()
@@ -33,10 +38,15 @@ namespace Schema2Code.Mapping
                 .ForMember(dest => dest.Attributes, opt => opt.ResolveUsing<AbstractAttributesResolver>())
                 .ConstructUsingServiceLocator();
 
+            CreateMap<XmlSchemaElement, IEnum>()
+                .IgnoreAllUnmapped()
+                .ForMember(dest => dest.QualifiedName, opt => opt.MapFrom(src => src.ElementSchemaType.QualifiedName))
+                .ForMember(dest => dest.Entries, opt=> opt.ResolveUsing<AbstractEnumEntriesResolver>() )
+                .ConstructUsingServiceLocator();
+
             CreateMap<XmlSchemaElement, IType>()
                 .IgnoreAllUnmapped()
                 .ForMember(dest => dest.QualifiedName, opt => opt.MapFrom(src => src.ElementSchemaType.QualifiedName))
-
                 .ConstructUsingServiceLocator();
             
             CreateMap<XmlSchemaElement, IMember>()

@@ -12,7 +12,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="FeetSize" type="ns1:sizeType"/>
-				<xs:element name="Document" type="ns1:documentType"/>
+				<xs:element name="Document" type="ns1:shoeDocumentType"/>
 				<xs:element name="anonymous">
 					<xs:complexType>
 						<xs:sequence>

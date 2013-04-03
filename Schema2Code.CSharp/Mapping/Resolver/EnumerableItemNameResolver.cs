@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Schema;
 using Schema2Code.Mapping.Resolver;
+using Schema2Code.Xml.Schema.Extension;
 
 namespace Schema2Code.CSharp.Mapping.Resolver
 {
@@ -11,10 +12,7 @@ namespace Schema2Code.CSharp.Mapping.Resolver
     {
         public override string Resolve(XmlSchemaElement source)
         {
-            var complex = source.ElementSchemaType as XmlSchemaComplexType;
-            var sequence = complex.ContentTypeParticle as XmlSchemaSequence;
-
-            var item = sequence.Items[0] as XmlSchemaElement;
+            var item = source.SequenceObjects()[0] as XmlSchemaElement;
             return item.Name;
         }
     }

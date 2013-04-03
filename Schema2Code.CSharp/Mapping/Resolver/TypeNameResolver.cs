@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml.Schema;
 using Schema2Code.Code;
 using Schema2Code.Mapping.Resolver;
+using Schema2Code.Xml.Schema.Extension;
 
 namespace Schema2Code.CSharp.Mapping.Resolver
 {
@@ -12,8 +13,7 @@ namespace Schema2Code.CSharp.Mapping.Resolver
     {
         public override IQualifiedName Resolve(XmlSchemaElement source)
         {
-            var anon = source.ElementSchemaType.QualifiedName.IsEmpty;
-            return AutoMapper.Mapper.Map<IQualifiedName>(!anon ? source.ElementSchemaType.QualifiedName : source.QualifiedName);
+            return AutoMapper.Mapper.Map<IQualifiedName>(!source.IsAnonymousType() ? source.ElementSchemaType.QualifiedName : source.QualifiedName);
         }
     }
 }

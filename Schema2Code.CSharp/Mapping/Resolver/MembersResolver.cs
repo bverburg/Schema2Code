@@ -6,6 +6,7 @@ using System.Xml.Schema;
 using Schema2Code.CSharp.Code;
 using Schema2Code.Code;
 using Schema2Code.Mapping.Resolver;
+using Schema2Code.Xml.Schema.Extension;
 
 namespace Schema2Code.CSharp.Mapping.Resolver
 {
@@ -13,19 +14,16 @@ namespace Schema2Code.CSharp.Mapping.Resolver
     {
         public override List<IMember> Resolve(XmlSchemaElement source)
         {
-            var complexType = source.ElementSchemaType as XmlSchemaComplexType;
-            var xmlSequence = complexType.ContentTypeParticle as XmlSchemaSequence;
-
             var properties = new List<IMember>();
 
-            foreach (var item in xmlSequence.Items)
+            foreach (var item in source.SequenceObjects())
             {
                 var propertyElement = item as XmlSchemaElement;
                 if (propertyElement != null)
                 {
                     IMember member = null;
 
-                    if (!propertyElement.ElementSchemaType.QualifiedName.IsEmpty)
+                    if (!propertyElement.IsAnonymousType())
                     {
                         member = AutoMapper.Mapper.Map<IMember>(propertyElement);
                     }
