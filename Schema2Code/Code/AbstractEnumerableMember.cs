@@ -11,7 +11,7 @@ namespace Schema2Code.Code
 
         public override string ToString()
         {
-            return "Enumerable Member[ Name = " + Name + "; ItemName = " + ItemName + " Type = "+ Type.QualifiedName +"]";
+            return Name + " [" + ItemName + ": "+ Type.QualifiedName+"]";
         }
     }
 }

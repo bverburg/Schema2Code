@@ -45,7 +45,7 @@ namespace Schema2Code.Code
 
         public override string ToString()
         {
-            return "Member[ Name = " + Name + "; Type = " + Type.QualifiedName + " ]";
+            return Name + ": " + Type.QualifiedName;
         }
     }
 }

@@ -28,8 +28,7 @@ namespace Schema2Code.Mapping.Resolver
                 return MappingEngine.Map<IClass>(item);
             if (item.IsSimpleType())
                 return MappingEngine.Map<IType>(item);
-
-
+            
             return null;
         }
     }

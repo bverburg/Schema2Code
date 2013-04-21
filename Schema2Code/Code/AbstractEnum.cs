@@ -11,7 +11,7 @@ namespace Schema2Code.Code
 
         public override string ToString()
         {
-            return "Enum[ Name = " + QualifiedName + "; ]";
+            return "Enum: " + QualifiedName;
         }
     }
 }

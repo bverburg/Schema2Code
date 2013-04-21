@@ -33,13 +33,8 @@ namespace Test
             }
 
         }
-
-        private static void PrintTree(ITyped typed, String indent, bool last)
-        {
-            
-        }
-        
-        private static void PrintTree(IType type, String indent, bool last)
+      
+        private static void PrintTree(Object type, String indent, bool last)
         {
             Console.Write(indent);
             if (last)
@@ -60,8 +55,13 @@ namespace Test
 
                 foreach (var member in clas.Members)
                 {
-                    PrintTree(member.Type,indent,false);
+                    PrintTree(member,indent,false);
                 }
+            }
+            if (type is IMember)
+            {
+                var member = type as IMember;
+                PrintTree(member.Type, indent, false);
             }
 
             
