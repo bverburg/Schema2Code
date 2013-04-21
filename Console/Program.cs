@@ -27,13 +27,6 @@ namespace Console
             var kernel = new StandardKernel();
             kernel.Load(AppDomain.CurrentDomain.GetAssemblies());
 
-            Mapper.Initialize(map =>
-                                  {
-                                      map.ConstructServicesUsing(t => kernel.Get(t));
-                                      map.AddProfile<SchemaMapProfile>();
-                                  });
-
-            //AutoMapper.Mapper.Map();
         }
     }
 }

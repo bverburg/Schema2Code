@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Schema2Code.Mapping
 {
-    public interface ITypeConverter<TFrom,TTo>
+    public interface ITypeConverter<TLeft,TRight>
     {
-
+        TLeft Convert(TRight from);
+        TRight Convert(TLeft from);
     }
 }

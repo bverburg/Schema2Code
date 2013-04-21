@@ -17,7 +17,7 @@ namespace Schema2Code.Code
 
         public override string ToString()
         {
-            return "Class[ Name = " + QualifiedName.Name + "; Namespace = " + QualifiedName.NameSpace + " Members = " + string.Join(", ", members.Select(x => x.ToString())) + "]";
+            return QualifiedName.FullyQualifiedName;
         }
     }
 }

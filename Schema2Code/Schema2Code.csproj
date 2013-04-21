@@ -86,10 +86,14 @@
     <Compile Include="Code\IType.cs" />
     <Compile Include="Code\ITyped.cs" />
     <Compile Include="Code\ITypeRegister.cs" />
+    <Compile Include="Inject\AutoMapperModule.cs" />
+    <Compile Include="Inject\NinjectExtensions.cs" />
+    <Compile Include="Mapping\DelegatingTypeConverter.cs" />
     <Compile Include="Mapping\Formatter\AbstractValueFormatter.cs" />
     <Compile Include="Mapping\ITypeConverter.cs" />
     <Compile Include="Mapping\IValueFormatter.cs" />
     <Compile Include="Mapping\IValueResolver.cs" />
+    <Compile Include="Mapping\MappingEngineDelegate.cs" />
     <Compile Include="Mapping\Resolver\AbstractAttributesResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractEnumEntriesResolver.cs" />
     <Compile Include="Mapping\Resolver\AbstractTypeNameResolver.cs" />
@@ -111,9 +115,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Inject\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,6 +11,7 @@ using AutoMapper;
 using Ninject;
 using Schema2Code.CSharp.Inject;
 using Schema2Code.Code;
+using Schema2Code.Inject;
 using Schema2Code.Mapping;
 using Schema2Code.Xml.Schema;
 using Xunit;
@@ -22,26 +23,53 @@ namespace Test
         [Fact]
         public void Test()
         {
-            var kernel = new StandardKernel(new CodeModule());
-
-            Mapper.Initialize(map =>
-            {
-                map.ConstructServicesUsing(t => kernel.Get(t));
-                map.AddProfile<SchemaMapProfile>();
-            });
-            Mapper.AssertConfigurationIsValid();
-
+            var kernel = new StandardKernel(new CodeModule(), new AutoMapperModule());
+            var mappingEngine = kernel.Get<IMappingEngine>();
             var schema = ReadAndCompileSchema("Resource/TestSchema.xsd");
-            TraverseSOM(schema);
+            var list = TraverseSom(schema, mappingEngine);
+            foreach (var type in list)
+            {
+                PrintTree(type,String.Empty,false);
+            }
+
         }
 
-        private static void TraverseSOM(XmlSchema custSchema)
+        private static void PrintTree(ITyped typed, String indent, bool last)
         {
-            foreach (XmlSchemaElement elem in
-                             custSchema.Elements.Values)
+            
+        }
+        
+        private static void PrintTree(IType type, String indent, bool last)
+        {
+            Console.Write(indent);
+            if (last)
             {
-                ProcessType(elem);
+                Console.Write("\\-");
+                indent += "  ";
             }
+            else
+            {
+                Console.Write("|-");
+                indent += "| ";
+            }
+            Console.WriteLine(type);
+
+            if(type is IClass)
+            {
+                var clas = type as IClass;
+
+                foreach (var member in clas.Members)
+                {
+                    PrintTree(member.Type,indent,false);
+                }
+            }
+
+            
+        }
+
+        private static List<IType> TraverseSom(XmlSchema custSchema, IMappingEngine mappingEngine)
+        {
+            return (from XmlSchemaElement elem in custSchema.Elements.Values select ProcessType(elem, mappingEngine)).ToList();
         }
 
         private static XmlSchema ReadAndCompileSchema(string fileName)
@@ -75,15 +103,9 @@ namespace Test
         }
 
         
-        private static void ProcessType(XmlSchemaElement elem)
+        private static IType ProcessType(XmlSchemaElement elem, IMappingEngine mappingEngine)
         {
-            var type = AutoMapper.Mapper.Map<IClass>(elem);
-                
-            if(type != null)
-                Console.WriteLine(type.ToString());
-            
+            return mappingEngine.Map<IClass>(elem);
         }
-
-        
     }
 }

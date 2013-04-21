@@ -1,32 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using AutoMapper;
+using Ninject;
 
 namespace Schema2Code.Mapping
 {
     public static class MappingExtensions
     {
+        public static void LoadProfiles(this IConfiguration configuration, IKernel kernel, params Assembly[] assemblies)
+        {
+            var profileType = typeof(Profile);
 
-        //Profile
+            if (assemblies == null)
+            {
+                throw new ArgumentNullException("assemblies");
+            }
+
+            foreach (var assembly in assemblies)
+            {
+                try
+                {
+                    foreach (var type in assembly.GetTypes())
+                    {
+                        if (type != profileType && profileType.IsAssignableFrom(type))
+                        {
+                            configuration.AddProfile((Profile)kernel.Get(type));
+                        }
+                    }
+                }
+                catch (ReflectionTypeLoadException)
+                {
+                    //eat exception, we cant help it if dependencies are broken.
+                }
+            }
+
+        }
+
         public static IMappingExpression<TSource, TDest> IgnoreAllUnmapped<TSource, TDest>(this IMappingExpression<TSource, TDest> expression)
         {
             expression.ForAllMembers(opt => opt.Ignore());
             return expression;
         }
 
-        public static IMappingExpression<TSource, TDest> CreateMapWithLocator<TSource, TDest>(this Profile profile)
-        {
-            var map = profile.CreateMap<TSource, TDest>();
-            map.ConstructUsingServiceLocator();
-            return map;
-        }
+        //public static IMappingExpression<TSource, TDest> ValidateUsing<TSource, TDest>(this IMappingExpression<TSource, TDest> mappingExpression, IValidator<TSource> validator)
+        //{
+        //    return mappingExpression.BeforeMap((x, y) => validator.ValidateAndThrow(x));
+        //}
 
-        public static void ResolveUsing<TSource,TDestination>(this IMemberConfigurationExpression<TSource> configuration, IValueResolver<TSource,TDestination> resolver)
-        {
-            //configuration.
-        }
+        //public static IMappingExpression<TSource, TDest> ValidateUsing<TSource, TDest>(this IMappingExpression<TSource, TDest> mappingExpression, IValidator<TDest> validator)
+        //{
+        //    return mappingExpression.AfterMap((x, y) => validator.ValidateAndThrow(y));
+        //}
     }
 
 

@@ -7,6 +7,7 @@ using AutoMapper;
 using NLog;
 using Ninject;
 using Schema2Code.Code;
+using Schema2Code.Xml.Schema.Extension;
 
 namespace Schema2Code.Mapping.Resolver
 {
@@ -14,10 +15,16 @@ namespace Schema2Code.Mapping.Resolver
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
-        [Inject]
-        public ITypeRegister TypeRegister { get; set; }
-        [Inject]
-        public AbstractTypeNameResolver TypeNameResolver { get; set; }
+        protected ITypeRegister TypeRegister { get; set; }
+        protected IMappingEngine MappingEngine { get; set; }
+        protected AbstractTypeNameResolver TypeNameResolver { get; set; }
+
+        protected AbstractTypeResolver(ITypeRegister typeRegister, AbstractTypeNameResolver typeNameResolver, IMappingEngine mappingEngine)
+        {
+            this.TypeRegister = typeRegister;
+            this.TypeNameResolver = typeNameResolver;
+            this.MappingEngine = mappingEngine;
+        }
 
         public override IType Resolve(XmlSchemaElement from)
         {
@@ -28,6 +35,8 @@ namespace Schema2Code.Mapping.Resolver
             {
                 Logger.Debug("Did not find type, resolving...");
                 type = ResolveType(from);
+                if(type == null)
+                    throw new ApplicationException("Could not resolve type "+from.Name);
                 TypeRegister.AddType(type);
             }
             else
@@ -36,6 +45,24 @@ namespace Schema2Code.Mapping.Resolver
             }
             return type;
         }
-        public abstract IType ResolveType(XmlSchemaElement element);
+
+        public virtual IType ResolveType(XmlSchemaElement source)
+        {
+            if (source.IsComplexType())
+            {
+                return MappingEngine.Map<IClass>(source);
+            }
+            if (source.IsSimpleType())
+            {
+
+                var elementType = (XmlSchemaSimpleTypeRestriction)((XmlSchemaSimpleType)source.ElementSchemaType).Content;
+                if (elementType.Facets.Count > 0)
+                {
+
+                }
+                return MappingEngine.Map<IType>(source);
+            }
+            return null;
+        }
     }
 }
